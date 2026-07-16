@@ -402,7 +402,7 @@ ul { list-style: none; }
 .dashboard__hero-content {
   position: relative;
   text-align: center;
-  padding: 18px var(--sp-lg);
+  padding: 12px var(--sp-lg);
 }
 
 .hero-badge {
@@ -608,9 +608,9 @@ ul { list-style: none; }
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
-  padding: 10px 4px;
+  padding: 6px 4px;
   transition: all var(--transition);
-  aspect-ratio: 0.75;
+  aspect-ratio: 0.68;
 }
 
 .shortcut-card:hover {
