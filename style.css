@@ -425,6 +425,7 @@ ul { list-style: none; }
   color: #fff;
   line-height: 1;
   margin-bottom: var(--sp-xs);
+  word-wrap: break-word;
 }
 
 .hero-title span {
@@ -463,7 +464,7 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 56px;
+  min-width: 0;
 }
 
 .countdown-value {
@@ -497,6 +498,7 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: var(--sp-lg);
+  flex-wrap: wrap;
 }
 
 .progress-card__circle-wrap {
@@ -613,6 +615,7 @@ ul { list-style: none; }
   padding: var(--sp-md) var(--sp-sm);
   transition: all var(--transition);
   aspect-ratio: 1;
+  min-width: 0;
 }
 
 .shortcut-card:hover {
@@ -631,6 +634,7 @@ ul { list-style: none; }
   font-weight: 600;
   color: var(--clr-on-surface);
   text-align: center;
+  word-break: break-word;
 }
 
 /* Categorías del dashboard */
