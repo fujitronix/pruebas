@@ -1,0 +1,208 @@
+{
+  "version": "1.0",
+  "categories": [
+    {
+      "id": "cat-imprescindibles",
+      "nombre": "Imprescindibles",
+      "icono": "⭐",
+      "orden": 0,
+      "items": [
+        { "id": "i-001", "texto": "DNI / Pasaporte", "completado": false, "favorito": true, "prioridad": "alta", "notas": "Imprescindible para la entrada", "orden": 0 },
+        { "id": "i-002", "texto": "Entrada Euskal34 (impresa o digital)", "completado": false, "favorito": true, "prioridad": "alta", "notas": "Guardar en el móvil y en papel", "orden": 1 },
+        { "id": "i-003", "texto": "Dinero en efectivo", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Para el Eroski y gastos varios", "orden": 2 },
+        { "id": "i-004", "texto": "Tarjeta bancaria", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 3 },
+        { "id": "i-005", "texto": "Móvil cargado", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 4 },
+        { "id": "i-006", "texto": "Cargador del móvil", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 5 },
+        { "id": "i-007", "texto": "Llaves de casa", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 6 }
+      ]
+    },
+    {
+      "id": "cat-setup",
+      "nombre": "Setup",
+      "icono": "🖥️",
+      "orden": 1,
+      "items": [
+        { "id": "s-001", "texto": "PC / Portátil", "completado": false, "favorito": true, "prioridad": "alta", "notas": "El equipo principal", "orden": 0 },
+        { "id": "s-002", "texto": "Monitor", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Comprobar resolución y cable", "orden": 1 },
+        { "id": "s-003", "texto": "Teclado", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 2 },
+        { "id": "s-004", "texto": "Ratón", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 3 },
+        { "id": "s-005", "texto": "Alfombrilla de ratón", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 4 },
+        { "id": "s-006", "texto": "Auriculares / Headset", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 5 },
+        { "id": "s-007", "texto": "Webcam", "completado": false, "favorito": false, "prioridad": "baja", "notas": "", "orden": 6 },
+        { "id": "s-008", "texto": "Regleta / Ladrón de corriente", "completado": false, "favorito": true, "prioridad": "alta", "notas": "Mínimo 4 enchufes", "orden": 7 },
+        { "id": "s-009", "texto": "Cable de corriente del PC", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 8 },
+        { "id": "s-010", "texto": "Cable HDMI / DisplayPort", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Llevar adaptadores", "orden": 9 },
+        { "id": "s-011", "texto": "Silla plegable / cojín", "completado": false, "favorito": false, "prioridad": "media", "notas": "Para mayor comodidad", "orden": 10 }
+      ]
+    },
+    {
+      "id": "cat-kit-it",
+      "nombre": "Kit IT",
+      "icono": "🔧",
+      "orden": 2,
+      "items": [
+        { "id": "k-001", "texto": "USB con sistema operativo de rescate", "completado": false, "favorito": false, "prioridad": "media", "notas": "Ventoy con varias ISOs", "orden": 0 },
+        { "id": "k-002", "texto": "Disco duro / SSD externo", "completado": false, "favorito": false, "prioridad": "media", "notas": "Para copias de seguridad y juegos", "orden": 1 },
+        { "id": "k-003", "texto": "Pendrive extra", "completado": false, "favorito": false, "prioridad": "baja", "notas": "", "orden": 2 },
+        { "id": "k-004", "texto": "Destornilladores", "completado": false, "favorito": false, "prioridad": "baja", "notas": "Por si hay que abrir algo", "orden": 3 },
+        { "id": "k-005", "texto": "Bridas y velcro para cables", "completado": false, "favorito": false, "prioridad": "media", "notas": "Para organizar el puesto", "orden": 4 },
+        { "id": "k-006", "texto": "Hub USB", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 5 },
+        { "id": "k-007", "texto": "Adaptador USB-C / USB-A", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 6 },
+        { "id": "k-008", "texto": "Linterna pequeña", "completado": false, "favorito": false, "prioridad": "baja", "notas": "Para trabajar en la oscuridad", "orden": 7 }
+      ]
+    },
+    {
+      "id": "cat-red",
+      "nombre": "Red",
+      "icono": "🌐",
+      "orden": 3,
+      "items": [
+        { "id": "r-001", "texto": "Cable de red Cat6 (5m mínimo)", "completado": false, "favorito": true, "prioridad": "alta", "notas": "La red cableada es obligatoria", "orden": 0 },
+        { "id": "r-002", "texto": "Switch de red (si se comparte mesa)", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 1 },
+        { "id": "r-003", "texto": "Tarjeta de red USB (por si falla la interna)", "completado": false, "favorito": false, "prioridad": "baja", "notas": "", "orden": 2 },
+        { "id": "r-004", "texto": "Configurar IP estática o DHCP", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Seguir instrucciones de la organización", "orden": 3 }
+      ]
+    },
+    {
+      "id": "cat-confort",
+      "nombre": "Confort",
+      "icono": "😌",
+      "orden": 4,
+      "items": [
+        { "id": "c-001", "texto": "Tapones para los oídos", "completado": false, "favorito": false, "prioridad": "alta", "notas": "El ruido es constante", "orden": 0 },
+        { "id": "c-002", "texto": "Antifaz para dormir", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 1 },
+        { "id": "c-003", "texto": "Esterilla / Colchoneta", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Para dormir en el pabellón", "orden": 2 },
+        { "id": "c-004", "texto": "Saco de dormir", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 3 },
+        { "id": "c-005", "texto": "Almohada hinchable", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 4 },
+        { "id": "c-006", "texto": "Candado para mochila", "completado": false, "favorito": false, "prioridad": "media", "notas": "Para asegurar el equipo", "orden": 5 }
+      ]
+    },
+    {
+      "id": "cat-dormir",
+      "nombre": "Dormir",
+      "icono": "😴",
+      "orden": 5,
+      "items": [
+        { "id": "d-001", "texto": "Saco de dormir", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 0 },
+        { "id": "d-002", "texto": "Esterilla aislante", "completado": false, "favorito": false, "prioridad": "alta", "notas": "El suelo del BEC es duro y frío", "orden": 1 },
+        { "id": "d-003", "texto": "Almohada o cojín", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 2 },
+        { "id": "d-004", "texto": "Tapones para los oídos", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Imprescindible para dormir en el pabellón", "orden": 3 },
+        { "id": "d-005", "texto": "Antifaz", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 4 },
+        { "id": "d-006", "texto": "Ropa de dormir cómoda", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 5 }
+      ]
+    },
+    {
+      "id": "cat-botiquin",
+      "nombre": "Botiquín",
+      "icono": "💊",
+      "orden": 6,
+      "items": [
+        { "id": "b-001", "texto": "Ibuprofeno / Paracetamol", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 0 },
+        { "id": "b-002", "texto": "Tiritas / Apósitos", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 1 },
+        { "id": "b-003", "texto": "Colirio (ojos secos por pantalla)", "completado": false, "favorito": false, "prioridad": "media", "notas": "Muchas horas de pantalla", "orden": 2 },
+        { "id": "b-004", "texto": "Protector solar", "completado": false, "favorito": false, "prioridad": "baja", "notas": "Para salir al exterior", "orden": 3 },
+        { "id": "b-005", "texto": "Medicación personal", "completado": false, "favorito": true, "prioridad": "alta", "notas": "No olvidar la medicación habitual", "orden": 4 },
+        { "id": "b-006", "texto": "Desinfectante de manos", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 5 }
+      ]
+    },
+    {
+      "id": "cat-ropa",
+      "nombre": "Ropa",
+      "icono": "👕",
+      "orden": 7,
+      "items": [
+        { "id": "ro-001", "texto": "Camisetas (1 por día + 1 extra)", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Del 22 al 26 de julio = 5 días", "orden": 0 },
+        { "id": "ro-002", "texto": "Pantalones / Shorts", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 1 },
+        { "id": "ro-003", "texto": "Ropa interior (1 por día)", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 2 },
+        { "id": "ro-004", "texto": "Calcetines (1 par por día)", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 3 },
+        { "id": "ro-005", "texto": "Zapatillas cómodas", "completado": false, "favorito": false, "prioridad": "alta", "notas": "Para estar muchas horas sentado", "orden": 4 },
+        { "id": "ro-006", "texto": "Sudadera / Chaqueta", "completado": false, "favorito": false, "prioridad": "media", "notas": "El pabellón puede estar frío por el aire acondicionado", "orden": 5 },
+        { "id": "ro-007", "texto": "Chanclas / Sandalias para la ducha", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 6 },
+        { "id": "ro-008", "texto": "Toalla", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 7 }
+      ]
+    },
+    {
+      "id": "cat-comida",
+      "nombre": "Comida",
+      "icono": "🍕",
+      "orden": 8,
+      "items": [
+        { "id": "co-001", "texto": "Snacks (frutos secos, barritas...)", "completado": false, "favorito": false, "prioridad": "media", "notas": "", "orden": 0 },
+        { "id": "co-002", "texto": "Bebidas energéticas / Café", "completado": false, "favorito": false, "prioridad": "media", "notas": "Para las noches largas", "orden": 1 },
+        { "id": "co-003", "texto": "Agua (botella reutilizable)", "completado": false, "favorito": true, "prioridad": "alta", "notas": "Hay fuentes en el BEC", "orden": 2 },
+        { "id": "co-004", "texto": "Comida para el primer día", "completado": false, "favorito": false, "prioridad": "media", "notas": "Hasta conocer el horario del Eroski", "orden": 3 },
+        { "id": "co-005", "texto": "Cubiertos reutilizables", "completado": false, "favorito": false, "prioridad": "baja", "notas": "", "orden": 4 }
+      ]
+    },
+    {
+      "id": "cat-documentacion",
+      "nombre": "Documentación",
+      "icono": "📄",
+      "orden": 9,
+      "items": [
+        { "id": "doc-001", "texto": "DNI / Pasaporte", "completado": false, "favorito": true, "prioridad": "alta", "notas": "", "orden": 0 },
+        { "id": "doc-002", "texto": "Entrada Euskal34 (impresa)", "completado": false, "favorito": true, "prioridad": "alta", "notas": "", "orden": 1 },
+        { "id": "doc-003", "texto": "Entrada Euskal34 (en el móvil)", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 2 },
+        { "id": "doc-004", "texto": "Seguro médico / Tarjeta sanitaria", "completado": false, "favorito": false, "prioridad": "alta", "notas": "", "orden": 3 },
+        { "id": "doc-005", "texto": "Número de emergencias anotado", "completado": false, "favorito": false, "prioridad": "media", "notas": "112 / Organización del evento", "orden": 4 }
+      ]
+    }
+  ],
+  "expenses": {
+    "people": [],
+    "items": []
+  },
+  "activities": {
+    "days": [
+      {
+        "id": "day-jueves",
+        "nombre": "Jueves 23 julio",
+        "fecha": "2026-07-23",
+        "actividades": [
+          { "id": "act-001", "hora": "10:00", "titulo": "Apertura de puertas y registro", "descripcion": "Recogida de acreditaciones y asignación de puestos", "lugar": "Entrada principal BEC" },
+          { "id": "act-002", "hora": "12:00", "titulo": "Inauguración oficial Euskal34", "descripcion": "Ceremonia de apertura del evento", "lugar": "Escenario principal" },
+          { "id": "act-003", "hora": "16:00", "titulo": "Competición: Quake / FPS Clásicos", "descripcion": "Torneo de shooters clásicos", "lugar": "Zona torneos" },
+          { "id": "act-004", "hora": "20:00", "titulo": "Torneo de CS2", "descripcion": "Counter-Strike 2 — fase clasificatoria", "lugar": "Zona torneos" },
+          { "id": "act-005", "hora": "22:00", "titulo": "Sesión de demoscene", "descripcion": "Presentación de demos y producciones artísticas", "lugar": "Escenario principal" }
+        ]
+      },
+      {
+        "id": "day-viernes",
+        "nombre": "Viernes 24 julio",
+        "fecha": "2026-07-24",
+        "actividades": [
+          { "id": "act-010", "hora": "10:00", "titulo": "Torneo de League of Legends", "descripcion": "Fase de grupos — LoL", "lugar": "Zona torneos" },
+          { "id": "act-011", "hora": "12:00", "titulo": "Charla: Historia de la demoscene vasca", "descripcion": "Ponencia sobre la escena local", "lugar": "Sala conferencias" },
+          { "id": "act-012", "hora": "15:00", "titulo": "Torneo de FIFA / EA Sports FC", "descripcion": "Competición de fútbol virtual", "lugar": "Zona torneos" },
+          { "id": "act-013", "hora": "18:00", "titulo": "Torneo de Rocket League", "descripcion": "Fase clasificatoria", "lugar": "Zona torneos" },
+          { "id": "act-014", "hora": "21:00", "titulo": "Concurso de gráficos", "descripcion": "Presentación de obras de arte digital", "lugar": "Escenario principal" },
+          { "id": "act-015", "hora": "23:00", "titulo": "Sesión de música electrónica", "descripcion": "DJ set en directo", "lugar": "Zona música" }
+        ]
+      },
+      {
+        "id": "day-sabado",
+        "nombre": "Sábado 25 julio",
+        "fecha": "2026-07-25",
+        "actividades": [
+          { "id": "act-020", "hora": "10:00", "titulo": "Torneo de Valorant", "descripcion": "Fase de grupos — Valorant", "lugar": "Zona torneos" },
+          { "id": "act-021", "hora": "12:00", "titulo": "Charla: Desarrollo de videojuegos indie", "descripcion": "Experiencias de desarrolladores locales", "lugar": "Sala conferencias" },
+          { "id": "act-022", "hora": "14:00", "titulo": "Torneo de Street Fighter / Lucha", "descripcion": "Competición de juegos de lucha", "lugar": "Zona torneos" },
+          { "id": "act-023", "hora": "17:00", "titulo": "Concurso de música (módulos)", "descripcion": "Presentación de composiciones musicales", "lugar": "Escenario principal" },
+          { "id": "act-024", "hora": "20:00", "titulo": "Finales de torneos principales", "descripcion": "Finales de CS2 y LoL", "lugar": "Escenario principal" },
+          { "id": "act-025", "hora": "22:00", "titulo": "Gala de premios", "descripcion": "Entrega de premios de todos los concursos", "lugar": "Escenario principal" }
+        ]
+      },
+      {
+        "id": "day-domingo",
+        "nombre": "Domingo 26 julio",
+        "fecha": "2026-07-26",
+        "actividades": [
+          { "id": "act-030", "hora": "10:00", "titulo": "Concurso de demos — presentaciones finales", "descripcion": "Últimas producciones de demoscene", "lugar": "Escenario principal" },
+          { "id": "act-031", "hora": "12:00", "titulo": "Torneo de retro gaming", "descripcion": "Competición con máquinas clásicas", "lugar": "Zona retro" },
+          { "id": "act-032", "hora": "15:00", "titulo": "Ceremonia de clausura", "descripcion": "Cierre oficial de Euskal34", "lugar": "Escenario principal" },
+          { "id": "act-033", "hora": "17:00", "titulo": "Desmontaje y despedida", "descripcion": "Recogida de equipos y hasta la próxima", "lugar": "Todo el pabellón" }
+        ]
+      }
+    ]
+  }
+}
