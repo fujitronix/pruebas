@@ -98,7 +98,6 @@ body {
   min-height: 100dvh;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  padding-left: 300px;
 }
 
 button { cursor: pointer; border: none; background: none; font-family: inherit; }
@@ -425,7 +424,6 @@ ul { list-style: none; }
   color: #fff;
   line-height: 1;
   margin-bottom: var(--sp-xs);
-  word-wrap: break-word;
 }
 
 .hero-title span {
@@ -464,7 +462,7 @@ ul { list-style: none; }
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-width: 0;
+  min-width: 56px;
 }
 
 .countdown-value {
@@ -498,7 +496,6 @@ ul { list-style: none; }
   display: flex;
   align-items: center;
   gap: var(--sp-lg);
-  flex-wrap: wrap;
 }
 
 .progress-card__circle-wrap {
@@ -600,7 +597,6 @@ ul { list-style: none; }
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: var(--sp-sm);
-  padding-left: 100px;
 }
 
 .shortcut-card {
@@ -615,7 +611,6 @@ ul { list-style: none; }
   padding: var(--sp-md) var(--sp-sm);
   transition: all var(--transition);
   aspect-ratio: 1;
-  min-width: 0;
 }
 
 .shortcut-card:hover {
@@ -634,7 +629,6 @@ ul { list-style: none; }
   font-weight: 600;
   color: var(--clr-on-surface);
   text-align: center;
-  word-break: break-word;
 }
 
 /* Categorías del dashboard */
