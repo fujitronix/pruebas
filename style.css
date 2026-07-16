@@ -365,14 +365,14 @@ ul { list-style: none; }
 }
 
 /* ===== DASHBOARD ===== */
-.dashboard { display: flex; flex-direction: column; gap: var(--sp-md); }
+.dashboard { display: flex; flex-direction: column; gap: var(--sp-sm); }
 
 /* Hero Banner */
 .dashboard__hero {
   position: relative;
   border-radius: var(--radius-xl);
   overflow: hidden;
-  min-height: 160px;
+  min-height: 130px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -402,7 +402,7 @@ ul { list-style: none; }
 .dashboard__hero-content {
   position: relative;
   text-align: center;
-  padding: var(--sp-xl) var(--sp-lg);
+  padding: var(--sp-lg);
 }
 
 .hero-badge {
@@ -418,7 +418,7 @@ ul { list-style: none; }
 }
 
 .hero-title {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 900;
   letter-spacing: -0.02em;
   color: #fff;
@@ -448,7 +448,7 @@ ul { list-style: none; }
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--clr-on-surface-2);
-  margin-bottom: var(--sp-md);
+  margin-bottom: var(--sp-sm);
 }
 
 .countdown-grid {
@@ -466,7 +466,7 @@ ul { list-style: none; }
 }
 
 .countdown-value {
-  font-size: 2.2rem;
+  font-size: 1.9rem;
   font-weight: 800;
   font-variant-numeric: tabular-nums;
   background: linear-gradient(135deg, var(--clr-primary), var(--clr-accent));
@@ -485,10 +485,10 @@ ul { list-style: none; }
 }
 
 .countdown-sep {
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-weight: 300;
   color: var(--clr-on-surface-2);
-  margin-bottom: 12px;
+  margin-bottom: 8px;
 }
 
 /* Progreso circular */
@@ -580,12 +580,12 @@ ul { list-style: none; }
   border-radius: var(--radius-lg);
   overflow: hidden;
   line-height: 0;
-  max-height: 360px;
+  max-height: 260px;
 }
 
 .gandalf-img {
   width: 100%;
-  height: 360px;
+  height: 260px;
   object-fit: cover;
   object-position: center 20%;
   display: block;
@@ -595,8 +595,8 @@ ul { list-style: none; }
 /* Accesos directos */
 .shortcuts-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: var(--sp-sm);
+  grid-template-columns: repeat(5, 1fr);
+  gap: 6px;
 }
 
 .shortcut-card {
@@ -608,9 +608,9 @@ ul { list-style: none; }
   background: var(--clr-surface);
   border: 1px solid var(--clr-border);
   border-radius: var(--radius-lg);
-  padding: var(--sp-md) var(--sp-sm);
+  padding: 10px 4px;
   transition: all var(--transition);
-  aspect-ratio: 1;
+  aspect-ratio: 0.9;
 }
 
 .shortcut-card:hover {
@@ -622,13 +622,14 @@ ul { list-style: none; }
 
 .shortcut-card:active { transform: scale(0.94); }
 
-.shortcut-icon { font-size: 1.8rem; }
+.shortcut-icon { font-size: 1.3rem; }
 
 .shortcut-label {
-  font-size: 0.7rem;
+  font-size: 0.6rem;
   font-weight: 600;
   color: var(--clr-on-surface);
   text-align: center;
+  line-height: 1.15;
 }
 
 /* Categorías del dashboard */
