@@ -195,6 +195,9 @@ async function inicializarApp() {
   // Cargar tema guardado
   UI.cargarTema();
 
+  // Inicializar sincronización online (Firebase)
+  Sync.inicializar();
+
   // Inicializar eventos de UI
   UI.inicializar();
 
@@ -215,7 +218,7 @@ async function inicializarApp() {
   Activities.inicializar(datos);
   Settings.inicializar(datos);
   Countdown.inicializar();
-  Eroski.inicializar();
+  Sitios.inicializar();
 
   // Registrar Service Worker
   if ('serviceWorker' in navigator) {

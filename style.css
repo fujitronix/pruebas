@@ -1258,6 +1258,76 @@ ul { list-style: none; }
   border-bottom: 1px solid var(--clr-border);
 }
 
+/* ===== SITE CARD (Sitios: supermercados, tiendas, restaurantes) ===== */
+
+.site-card {
+  background: var(--clr-surface);
+  border: 1px solid var(--clr-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: var(--sp-sm);
+}
+
+.site-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-sm);
+  padding: var(--sp-md);
+  cursor: pointer;
+  user-select: none;
+  transition: background var(--transition);
+}
+
+.site-card__header:hover { background: var(--clr-surface-2); }
+
+.site-card__info { flex: 1; min-width: 0; }
+
+.site-card__name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--clr-on-bg);
+}
+
+.site-card__direccion {
+  font-size: 0.75rem;
+  color: var(--clr-on-surface-2);
+}
+
+.site-card__maps {
+  flex-shrink: 0;
+  color: var(--clr-primary);
+}
+
+.site-card__maps svg { width: 20px; height: 20px; fill: currentColor; }
+
+.site-card__chevron {
+  width: 20px; height: 20px;
+  flex-shrink: 0;
+  fill: var(--clr-on-surface-2);
+  transition: transform var(--transition);
+}
+
+.site-card.open .site-card__chevron { transform: rotate(180deg); }
+
+.site-card__body {
+  border-top: 1px solid var(--clr-border);
+  padding: var(--sp-md);
+  display: none;
+}
+
+.site-card.open .site-card__body { display: block; }
+
+.site-card__horario-texto {
+  font-size: 0.85rem;
+  color: var(--clr-on-bg);
+}
+
+.site-card__nota {
+  font-size: 0.75rem;
+  color: var(--clr-on-surface-2);
+  margin-top: var(--sp-xs);
+}
+
 .activity-item:last-child { border-bottom: none; }
 
 .activity-item__time {
