@@ -16,8 +16,8 @@ const Activities = (() => {
   ];
 
   const INFO_DUCHAS = [
-    { grupo: 'Hombres (pabellón 5)', cerradas: '11-12h, 14-15h, 17-18h, 21-22h' },
-    { grupo: 'Mujeres (pabellón 3)', cerradas: '10-11h, 13-14h, 16-17h, 20-21h' }
+    { grupo: 'Hombres (pabellón 5)', abiertas: '00:00-11:00, 12:00-14:00, 15:00-17:00, 18:00-21:00, 22:00-24:00', cerradas: '11:00-12:00, 14:00-15:00, 17:00-18:00, 21:00-22:00' },
+    { grupo: 'Mujeres (pabellón 3)', abiertas: '00:00-10:00, 11:00-13:00, 14:00-16:00, 17:00-20:00, 21:00-24:00', cerradas: '10:00-11:00, 13:00-14:00, 16:00-17:00, 20:00-21:00' }
   ];
 
   function inicializar(datos) {
@@ -155,7 +155,7 @@ const Activities = (() => {
             </div>`).join('')}
         </div>
       </div>
-      <div class="site-card" id="info-duchas">
+      <div class="site-card open" id="info-duchas">
         <div class="site-card__header" data-info-id="duchas">
           <div class="site-card__info">
             <p class="site-card__name">🚿 Duchas</p>
@@ -165,9 +165,10 @@ const Activities = (() => {
         </div>
         <div class="site-card__body">
           ${INFO_DUCHAS.map(g => `
-            <p class="site-card__horario-texto" style="margin-bottom:0.5rem;">
+            <p class="site-card__horario-texto" style="margin-bottom:0.75rem;">
               <strong>${g.grupo}</strong><br>
-              <span style="color:var(--clr-on-surface-2);">Cerradas: ${g.cerradas}</span>
+              <span style="color:#4caf50;">✅ Abiertas: ${g.abiertas}</span><br>
+              <span style="color:#e57373;">❌ Cerradas: ${g.cerradas}</span>
             </p>`).join('')}
         </div>
       </div>`;
