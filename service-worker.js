@@ -1,4 +1,4 @@
-const CACHE_NAME = 'euskal34-cache-v7';
+const CACHE_NAME = 'euskal34-cache-v8';
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
@@ -10,9 +10,10 @@ const ASSETS_TO_CACHE = [
   './icons/icon-512.png',
   './icons/maskable-512.png',
   './js/storage.js',
+  './js/sync.js',
   './js/checklist.js',
   './js/ui.js',
-  './js/eroski.js',
+  './js/sitios.js',
   './js/countdown.js',
   './js/expenses.js',
   './js/activities.js',
