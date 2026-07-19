@@ -250,52 +250,87 @@ const Expenses = (() => {
 
     document.getElementById('btn-save-person').addEventListener('click', _guardarPersona);
 
-    // Sincronización de gastos (Formato Compacto)
-    const btnCopy = document.getElementById('btn-copy-expenses');
-    if (btnCopy) {
-      btnCopy.addEventListener('click', () => {
-        // Formato: "P1,Nombre1|P2,Nombre2#C1,Concepto,Importe,PagId,Part1,Part2"
-        const p = _datos.expenses.people.map(p => `${p.id},${p.nombre}`).join('|');
-        const i = _datos.expenses.items.map(i => `${i.categoria},${i.concepto},${i.importe},${i.pagadorId},${(i.participantes||[]).join(',')}`).join('|');
-        const code = btoa(`${p}#${i}`);
-        navigator.clipboard.writeText(code).then(() => {
-          UI.mostrarSnackbar('Código compacto copiado');
-        });
+    // Sincronización online (Firebase) — grupo por código, manual (botón)
+    _actualizarUISync();
+
+    const btnSyncCrear = document.getElementById('btn-sync-crear');
+    if (btnSyncCrear) {
+      btnSyncCrear.addEventListener('click', async () => {
+        btnSyncCrear.disabled = true;
+        try {
+          const codigo = await Sync.crearGrupo(_datos.expenses);
+          UI.mostrarSnackbar(`Grupo creado. Código: ${codigo}`);
+          _actualizarUISync();
+        } catch (e) {
+          UI.mostrarSnackbar('Error al crear el grupo: ' + e.message);
+        } finally {
+          btnSyncCrear.disabled = false;
+        }
       });
     }
 
-    const btnPaste = document.getElementById('btn-paste-expenses');
-    if (btnPaste) {
-      btnPaste.addEventListener('click', () => {
-        const code = prompt('Pega el código de gastos compartido:');
-        if (code) {
-          try {
-            const decoded = atob(code);
-            const [pStr, iStr] = decoded.split('#');
-            const people = pStr.split('|').map(s => {
-              const [id, nombre] = s.split(',');
-              return { id, nombre };
-            });
-            const items = iStr.split('|').map(s => {
-              const [categoria, concepto, importe, pagadorId, ...parts] = s.split(',');
-              return { 
-                categoria, 
-                concepto, 
-                importe: parseFloat(importe), 
-                pagadorId, 
-                participantes: parts.join(',').split(',').filter(x => x)
-              };
-            });
-            
-            const importedData = { expenses: { people, items } };
-            _datos = Storage.fusionarGastos(_datos, importedData);
-            _guardarYRenderizar();
-            UI.mostrarSnackbar('Gastos fusionados correctamente');
-          } catch (e) {
-            alert('Código inválido o error al fusionar.');
-          }
+    const btnSyncUnirse = document.getElementById('btn-sync-unirse');
+    if (btnSyncUnirse) {
+      btnSyncUnirse.addEventListener('click', async () => {
+        const input = document.getElementById('sync-code-input');
+        const codigo = input.value.trim().toUpperCase();
+        if (!codigo) { UI.mostrarSnackbar('Escribe el código del grupo'); return; }
+        btnSyncUnirse.disabled = true;
+        try {
+          const expensesRemotos = await Sync.unirseGrupo(codigo);
+          _datos = Storage.fusionarGastos(_datos, { expenses: expensesRemotos });
+          _guardarYRenderizar();
+          UI.mostrarSnackbar('Te has unido al grupo y se han fusionado los gastos');
+          _actualizarUISync();
+        } catch (e) {
+          UI.mostrarSnackbar('Error al unirse: ' + e.message);
+        } finally {
+          btnSyncUnirse.disabled = false;
         }
       });
+    }
+
+    const btnSyncNow = document.getElementById('btn-sync-now');
+    if (btnSyncNow) {
+      btnSyncNow.addEventListener('click', async () => {
+        btnSyncNow.disabled = true;
+        UI.mostrarSnackbar('Sincronizando…');
+        try {
+          _datos = await Sync.sincronizar(_datos);
+          _guardarYRenderizar();
+          UI.mostrarSnackbar('Gastos sincronizados correctamente');
+        } catch (e) {
+          UI.mostrarSnackbar('Error al sincronizar: ' + e.message);
+        } finally {
+          btnSyncNow.disabled = false;
+        }
+      });
+    }
+
+    const btnSyncSalir = document.getElementById('btn-sync-salir');
+    if (btnSyncSalir) {
+      btnSyncSalir.addEventListener('click', () => {
+        UI.confirmar('¿Salir del grupo? Dejarás de sincronizar, pero conservas los gastos que ya tienes.', () => {
+          Sync.salirDeGrupo();
+          _actualizarUISync();
+          UI.mostrarSnackbar('Has salido del grupo');
+        });
+      });
+    }
+  }
+
+  function _actualizarUISync() {
+    const setup = document.getElementById('sync-setup');
+    const activo = document.getElementById('sync-activo');
+    if (!setup || !activo) return;
+    if (Sync.tieneGrupo()) {
+      setup.classList.add('hidden');
+      activo.classList.remove('hidden');
+      const disp = document.getElementById('sync-code-display');
+      if (disp) disp.textContent = Sync.obtenerCodigo();
+    } else {
+      setup.classList.remove('hidden');
+      activo.classList.add('hidden');
     }
   }
 

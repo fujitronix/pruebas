@@ -90,6 +90,11 @@ const Activities = (() => {
   }
 
   function renderizar() {
+    _renderizarPrograma();
+    _renderizarInventario();
+  }
+
+  function _renderizarPrograma() {
     const container = document.getElementById('activities-container');
     if (!container || !_datos) return;
 
@@ -160,6 +165,40 @@ const Activities = (() => {
     });
   }
 
+  function _renderizarInventario() {
+    const container = document.getElementById('activities-inventory-container');
+    if (!container || !_datos) return;
+
+    const dias = _datos.activities.days
+      .map(dia => ({ ...dia, actividades: dia.actividades.filter(a => a.favorita && !a.eliminada) }))
+      .filter(dia => dia.actividades.length > 0);
+
+    if (dias.length === 0) {
+      container.innerHTML = `
+        <div class="empty-state">
+          <span class="empty-state__icon">⭐</span>
+          <p class="empty-state__title">Sin actividades seleccionadas</p>
+          <p class="empty-state__text">Marca actividades con la estrella en "Actividades" para verlas aquí.</p>
+        </div>`;
+      return;
+    }
+
+    container.innerHTML = dias.map(dia => `
+      <div class="inventory-cat">
+        <div class="inventory-cat__header">
+          <span>📅</span>
+          <span>${dia.nombre}</span>
+          <span style="margin-left:auto;font-weight:400;color:var(--clr-on-surface-2)">${dia.actividades.length} actividad${dia.actividades.length !== 1 ? 'es' : ''}</span>
+        </div>
+        ${dia.actividades.map(act => `
+          <div class="inventory-item">
+            <strong>${act.hora}</strong> — ${_esc(act.titulo)}
+            ${act.lugar ? `<br><span style="color:var(--clr-on-surface-2);font-size:0.8rem;">📍 ${_esc(act.lugar)}</span>` : ''}
+          </div>
+        `).join('')}
+      </div>`).join('');
+  }
+
   function _toggleEstado(id, campo) {
     _datos.activities.days.forEach(dia => {
       const act = dia.actividades.find(a => a.id === id);
@@ -185,7 +224,7 @@ const Activities = (() => {
           ${act.lugar ? `<p class="activity-item__lugar">📍 ${_esc(act.lugar)}</p>` : ''}
         </div>
         <div class="activity-item__actions">
-          <button class="act-btn-fav ${esFavorita}" data-id="${act.id}" title="Favorita">
+          <button class="act-btn-fav ${esFavorita}" data-id="${act.id}" title="Seleccionar para Mis Actividades">
             <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
           </button>
           <button class="act-btn-done ${esHecha}" data-id="${act.id}" title="Hecha">

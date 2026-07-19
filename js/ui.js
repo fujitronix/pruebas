@@ -38,13 +38,14 @@ const UI = (() => {
 
     // Actualizar título del AppBar
     const titulos = {
-      dashboard:   'EUSKAL34',
-      checklist:   'Checklist',
-      inventory:   'Inventario',
-      expenses:    'Gastos',
-      activities:  'Actividades',
-      eroski:      'Eroski BEC',
-      settings:    'Ajustes'
+      dashboard:            'EUSKAL34',
+      checklist:            'Checklist',
+      inventory:            'Inventario',
+      expenses:              'Gastos',
+      activities:            'Actividades',
+      'activities-inventory': 'Mis Actividades',
+      sitios:                'Sitios',
+      settings:              'Ajustes'
     };
 
     // Si navegamos a dashboard, limpiamos el historial para que sea el punto de inicio real
