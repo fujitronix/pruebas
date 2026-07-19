@@ -42,13 +42,38 @@ const Sitios = (() => {
           tipo: 'simple',
           horarioTexto: 'Horario no confirmado — comprobar antes de ir',
           nota: 'Hipermercado grande, útil para compra fuerte del grupo.'
+        },
+        {
+          id: 'aldi-ribera',
+          nombre: 'ALDI',
+          direccion: 'Erribera Etorbidea, 1b (muy cerca del Eroski BEC)',
+          lat: 43.286011, lng: -2.99676,
+          tipo: 'simple',
+          horarioTexto: 'Lunes a viernes: 09:30 – 21:30 · Sábado y domingo: cerrado'
         }
       ]
     },
     {
       id: 'tiendas',
       nombre: '🏪 Tiendas',
-      sitios: []
+      sitios: [
+        {
+          id: 'decathlon-barakaldo',
+          nombre: 'Decathlon Barakaldo',
+          direccion: 'Erribera Etorbidea, 5A',
+          lat: 43.290386, lng: -3.005385,
+          tipo: 'simple',
+          horarioTexto: 'Lunes a sábado: 10:00 – 22:00 · Domingo: cerrado'
+        },
+        {
+          id: 'leroy-merlin-megapark',
+          nombre: 'Leroy Merlin (Megapark)',
+          direccion: 'C.C. Megapark, Av. de la Ribera s/n',
+          lat: 43.2879215, lng: -3.0001449,
+          tipo: 'simple',
+          horarioTexto: 'Lunes a viernes: 09:00 – 22:00 · Sábado y domingo: cerrado'
+        }
+      ]
     },
     {
       id: 'restaurantes',
@@ -71,6 +96,15 @@ const Sitios = (() => {
           tipo: 'simple',
           horarioTexto: 'Horario no confirmado — comprobar antes de ir',
           nota: 'Buena relación calidad-precio, abre hasta tarde.'
+        },
+        {
+          id: 'retuerto',
+          nombre: 'Restaurante Retuerto',
+          direccion: 'Río Castaños Kalea, 43',
+          lat: 43.2844536, lng: -2.9973179,
+          tipo: 'simple',
+          horarioTexto: 'Lun-jue y domingo: 08:30 – 22:00 · Viernes y sábado: 08:30 – 23:30',
+          nota: 'Cocina tradicional de barrio, menú del día muy amplio (17 platos) y también bocatas, sandwiches y hamburguesas.'
         }
       ]
     }

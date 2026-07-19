@@ -6,6 +6,20 @@
 const Activities = (() => {
   let _datos = null;
 
+  // Información fija del evento (no son "actividades" con favorita/hecha, son datos de servicio)
+  const INFO_ACREDITACION = [
+    { dia: 'Miércoles', num: '22 julio', horas: '16:00 – 22:00' },
+    { dia: 'Jueves',    num: '23 julio', horas: '10:00 – 22:00' },
+    { dia: 'Viernes',   num: '24 julio', horas: '10:00 – 22:00' },
+    { dia: 'Sábado',    num: '25 julio', horas: '10:00 – 22:00' },
+    { dia: 'Domingo',   num: '26 julio', horas: '10:00 – 17:00' }
+  ];
+
+  const INFO_DUCHAS = [
+    { grupo: 'Hombres (pabellón 5)', cerradas: '11-12h, 14-15h, 17-18h, 21-22h' },
+    { grupo: 'Mujeres (pabellón 3)', cerradas: '10-11h, 13-14h, 16-17h, 20-21h' }
+  ];
+
   function inicializar(datos) {
     _datos = datos;
     
@@ -70,14 +84,36 @@ const Activities = (() => {
 
     const btnSync = document.getElementById('btn-sync-activities');
     if (btnSync) {
-      btnSync.addEventListener('click', () => {
-        UI.mostrarSnackbar('Sincronizando actividades...');
-        // Simulación de fetch seguro a la web de origen
-        // En una implementación real aquí iría el fetch a la API oficial
-        setTimeout(() => {
-          UI.mostrarSnackbar('Programa actualizado desde la web oficial');
-          renderizar();
-        }, 1500);
+      btnSync.addEventListener('click', async () => {
+        UI.confirmar('¿Actualizar el programa con la última versión incluida en la app? Tus actividades marcadas con estrella se conservarán.', async () => {
+          UI.mostrarSnackbar('Actualizando programa…');
+          try {
+            const res = await fetch('./data/default.json');
+            const fresco = await res.json();
+
+            // Conservar favorita/hecha de las actividades que ya existían (por id)
+            const estadoPrevio = {};
+            _datos.activities.days.forEach(dia => {
+              dia.actividades.forEach(act => {
+                estadoPrevio[act.id] = { favorita: !!act.favorita, hecha: !!act.hecha, eliminada: !!act.eliminada };
+              });
+            });
+
+            fresco.activities.days.forEach(dia => {
+              dia.actividades.forEach(act => {
+                const prev = estadoPrevio[act.id];
+                if (prev) Object.assign(act, prev);
+              });
+            });
+
+            _datos.activities = fresco.activities;
+            Storage.guardar(_datos);
+            renderizar();
+            UI.mostrarSnackbar('Programa actualizado');
+          } catch (e) {
+            UI.mostrarSnackbar('No se ha podido actualizar el programa');
+          }
+        });
       });
     }
 
@@ -90,8 +126,57 @@ const Activities = (() => {
   }
 
   function renderizar() {
+    _renderizarInfoFija();
     _renderizarPrograma();
     _renderizarInventario();
+  }
+
+  function _renderizarInfoFija() {
+    const container = document.getElementById('activities-info');
+    if (!container) return;
+
+    container.innerHTML = `
+      <div class="site-card" id="info-acreditacion">
+        <div class="site-card__header" data-info-id="acreditacion">
+          <div class="site-card__info">
+            <p class="site-card__name">🪪 Acreditación</p>
+            <p class="site-card__direccion">Entrada BEC — horario por día</p>
+          </div>
+          <svg class="site-card__chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+        <div class="site-card__body">
+          ${INFO_ACREDITACION.map(d => `
+            <div class="eroski-day">
+              <div class="eroski-day__date">
+                <p class="eroski-day__weekday">${d.dia}</p>
+                <p class="eroski-day__datenum">${d.num}</p>
+              </div>
+              <p class="eroski-day__hours">${d.horas}</p>
+            </div>`).join('')}
+        </div>
+      </div>
+      <div class="site-card" id="info-duchas">
+        <div class="site-card__header" data-info-id="duchas">
+          <div class="site-card__info">
+            <p class="site-card__name">🚿 Duchas</p>
+            <p class="site-card__direccion">Válido todos los días del evento</p>
+          </div>
+          <svg class="site-card__chevron" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+        <div class="site-card__body">
+          ${INFO_DUCHAS.map(g => `
+            <p class="site-card__horario-texto" style="margin-bottom:0.5rem;">
+              <strong>${g.grupo}</strong><br>
+              <span style="color:var(--clr-on-surface-2);">Cerradas: ${g.cerradas}</span>
+            </p>`).join('')}
+        </div>
+      </div>`;
+
+    container.querySelectorAll('.site-card__header').forEach(header => {
+      header.addEventListener('click', () => {
+        header.closest('.site-card').classList.toggle('open');
+      });
+    });
   }
 
   function _renderizarPrograma() {
