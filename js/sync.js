@@ -5,16 +5,13 @@
    cuando el usuario pulsa "Crear grupo / Unirme / Sincronizar".
    ============================================================ */
 
-// ⚠️ IMPORTANTE: sustituye estos valores por los de TU proyecto de Firebase.
-// Los encuentras en: Firebase console > Configuración del proyecto >
-// tus apps > app Web (</>) > "Configuración del SDK".
 const firebaseConfig = {
-  apiKey: "TU_API_KEY",
-  authDomain: "TU_PROYECTO.firebaseapp.com",
-  projectId: "TU_PROYECTO",
-  storageBucket: "TU_PROYECTO.appspot.com",
-  messagingSenderId: "TU_SENDER_ID",
-  appId: "TU_APP_ID"
+  apiKey: "AIzaSyDjpwX6ko_5A6I67gbp5GXbq_Z25Omu_cA",
+  authDomain: "prueba-71740.firebaseapp.com",
+  projectId: "prueba-71740",
+  storageBucket: "prueba-71740.firebasestorage.app",
+  messagingSenderId: "597030368321",
+  appId: "1:597030368321:web:80622dfb2cd465f17a02c0"
 };
 
 const Sync = (() => {
