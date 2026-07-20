@@ -192,6 +192,13 @@ const Settings = (() => {
 // ===== INICIALIZACIÓN PRINCIPAL =====
 
 async function inicializarApp() {
+  // Registrar Service Worker cuanto antes (no depende de datos ni de Firebase)
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./service-worker.js').catch(() => {
+      // Sin Service Worker funciona igualmente
+    });
+  }
+
   // Cargar tema guardado
   UI.cargarTema();
 
@@ -219,15 +226,6 @@ async function inicializarApp() {
   Settings.inicializar(datos);
   Countdown.inicializar();
   Sitios.inicializar();
-
-  // Registrar Service Worker
-  if ('serviceWorker' in navigator) {
-    try {
-      await navigator.serviceWorker.register('./service-worker.js');
-    } catch {
-      // Sin Service Worker funciona igualmente
-    }
-  }
 }
 
 // Arrancar cuando el DOM esté listo
