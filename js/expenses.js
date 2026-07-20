@@ -43,7 +43,7 @@ const Expenses = (() => {
   }
 
   function _renderResumen() {
-    const items   = _datos.expenses.items;
+    const items   = _datos.expenses.items.filter(i => !i.eliminada);
     const people  = _datos.expenses.people;
     const total   = items.reduce((s, i) => s + i.importe, 0);
     const num     = people.length;
@@ -59,7 +59,7 @@ const Expenses = (() => {
     const container = document.getElementById('expenses-list');
     if (!container) return;
 
-    const items = _datos.expenses.items;
+    const items = _datos.expenses.items.filter(i => !i.eliminada);
     if (items.length === 0) {
       container.innerHTML = `
         <div class="empty-state">
@@ -140,7 +140,7 @@ const Expenses = (() => {
     if (!tableContainer || !settleContainer) return;
 
     const people = _datos.expenses.people;
-    const items  = _datos.expenses.items;
+    const items  = _datos.expenses.items.filter(i => !i.eliminada);
 
     if (people.length === 0 || items.length === 0) {
       tableContainer.innerHTML = `
@@ -366,7 +366,8 @@ const Expenses = (() => {
 
   function _eliminarGasto(gastoId) {
     UI.confirmar('¿Eliminar este gasto?', () => {
-      _datos.expenses.items = _datos.expenses.items.filter(i => i.id !== gastoId);
+      const gasto = _datos.expenses.items.find(i => i.id === gastoId);
+      if (gasto) gasto.eliminada = true;
       _guardarYRenderizar();
       UI.mostrarSnackbar('Gasto eliminado');
     });

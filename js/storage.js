@@ -123,20 +123,29 @@ const Storage = (() => {
       }
     });
 
-    // 2. Fusionar Gastos (evitar duplicados por concepto, importe y pagador)
+    // 2. Fusionar Gastos (por id estable; si no hay coincidencia de id, se
+    //    compara por concepto+importe+pagador como respaldo para datos antiguos)
     impExp.items.forEach(impI => {
       // Ajustar pagadorId si la persona ya existía con otro ID
       const pagadorImp = impExp.people.find(p => p.id === impI.pagadorId);
       const pagadorIdLocal = pagadorImp && pagadorImp.idLocal ? pagadorImp.idLocal : impI.pagadorId;
-      
-      const esDuplicado = localExp.items.find(localI => 
-        localI.concepto.toLowerCase() === impI.concepto.toLowerCase() &&
-        Math.abs(localI.importe - impI.importe) < 0.01 &&
-        localI.pagadorId === pagadorIdLocal
-      );
 
-      if (!esDuplicado) {
-        const nuevoGasto = { ...impI, id: generarId('exp'), pagadorId: pagadorIdLocal };
+      let coincidencia = localExp.items.find(localI => localI.id === impI.id);
+
+      if (!coincidencia) {
+        coincidencia = localExp.items.find(localI =>
+          localI.concepto.toLowerCase() === impI.concepto.toLowerCase() &&
+          Math.abs(localI.importe - impI.importe) < 0.01 &&
+          localI.pagadorId === pagadorIdLocal
+        );
+      }
+
+      if (coincidencia) {
+        // Si cualquiera de las dos copias está marcada como eliminada,
+        // el borrado gana (no se "resucita" un gasto ya eliminado).
+        if (impI.eliminada) coincidencia.eliminada = true;
+      } else {
+        const nuevoGasto = { ...impI, pagadorId: pagadorIdLocal };
         // Ajustar participantes
         if (impI.participantes) {
           nuevoGasto.participantes = impI.participantes.map(pId => {
