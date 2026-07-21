@@ -173,8 +173,13 @@ const UI = (() => {
 
   // ===== DIALOG: CONFIRMACIÓN =====
 
-  function confirmar(mensaje, callback) {
+  function confirmar(mensaje, callback, opciones = {}) {
     document.getElementById('dialog-confirm-message').textContent = mensaje;
+    const btnOk = document.getElementById('btn-confirm-ok');
+    btnOk.textContent = opciones.textoBoton || 'Eliminar';
+    const esPeligroso = opciones.peligroso !== false; // por defecto, se mantiene el comportamiento anterior (rojo, "Eliminar")
+    btnOk.classList.toggle('btn-danger', esPeligroso);
+    btnOk.classList.toggle('btn-primary', !esPeligroso);
     document.getElementById('dialog-confirm-overlay').classList.remove('hidden');
     _confirmCallback = callback;
   }

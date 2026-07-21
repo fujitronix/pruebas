@@ -314,7 +314,7 @@ const Expenses = (() => {
           Sync.salirDeGrupo();
           _actualizarUISync();
           UI.mostrarSnackbar('Has salido del grupo');
-        });
+        }, { textoBoton: 'Salir', peligroso: false });
       });
     }
   }

@@ -58,7 +58,7 @@ const Activities = (() => {
         const lugar = document.getElementById('act-ubicacion').value.trim();
 
         if (!hora || !titulo) {
-          alert('La hora y la actividad son obligatorias.');
+          UI.mostrarSnackbar('La hora y la actividad son obligatorias');
           return;
         }
 
@@ -113,7 +113,7 @@ const Activities = (() => {
           } catch (e) {
             UI.mostrarSnackbar('No se ha podido actualizar el programa');
           }
-        });
+        }, { textoBoton: 'Actualizar', peligroso: false });
       });
     }
 
@@ -135,8 +135,13 @@ const Activities = (() => {
     const container = document.getElementById('activities-info');
     if (!container) return;
 
+    // Recordar qué tarjetas estaban abiertas antes de reconstruir
+    const yaExistia = container.querySelectorAll('.site-card').length > 0;
+    const acredAbierta = yaExistia ? container.querySelector('#info-acreditacion')?.classList.contains('open') : false;
+    const duchasAbierta = yaExistia ? container.querySelector('#info-duchas')?.classList.contains('open') : true;
+
     container.innerHTML = `
-      <div class="site-card" id="info-acreditacion">
+      <div class="site-card ${acredAbierta ? 'open' : ''}" id="info-acreditacion">
         <div class="site-card__header" data-info-id="acreditacion">
           <div class="site-card__info">
             <p class="site-card__name">🪪 Acreditación</p>
@@ -155,7 +160,7 @@ const Activities = (() => {
             </div>`).join('')}
         </div>
       </div>
-      <div class="site-card open" id="info-duchas">
+      <div class="site-card ${duchasAbierta ? 'open' : ''}" id="info-duchas">
         <div class="site-card__header" data-info-id="duchas">
           <div class="site-card__info">
             <p class="site-card__name">🚿 Duchas</p>
@@ -197,16 +202,25 @@ const Activities = (() => {
 
     const hoy = _fechaHoy();
 
+    // Recordar qué días estaban abiertos antes de reconstruir el HTML,
+    // para no colapsarlos cada vez que se marca/edita/elimina algo.
+    const diasExistentes = container.querySelectorAll('.activity-day');
+    const esPrimeraVez = diasExistentes.length === 0;
+    const abiertosPrevios = new Set(
+      Array.from(container.querySelectorAll('.activity-day.open')).map(el => el.id)
+    );
+
     container.innerHTML = dias.map((dia, idx) => {
       const esHoy = dia.fecha === hoy;
-      // Abrir el día actual por defecto
-      const abierto = esHoy || idx === 0;
+      const idEl = `day-${dia.id}`;
+      // Primera vez: abrir el día de hoy (o el primero). Después: respetar lo que ya tenía el usuario abierto.
+      const abierto = esPrimeraVez ? (esHoy || idx === 0) : abiertosPrevios.has(idEl);
       return `
-        <div class="activity-day ${abierto ? 'open' : ''}" id="day-${dia.id}">
+        <div class="activity-day ${abierto ? 'open' : ''}" id="${idEl}">
           <div class="activity-day__header ${esHoy ? 'today' : ''}" data-day-id="${dia.id}">
             <div>
               <p class="activity-day__name">${dia.nombre}${esHoy ? ' 📍' : ''}</p>
-              <p class="activity-day__date">${dia.actividades.length} actividades</p>
+              <p class="activity-day__date">${dia.actividades.filter(a => !a.eliminada).length} actividades</p>
             </div>
             <svg class="activity-day__chevron" viewBox="0 0 24 24">
               <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
@@ -244,9 +258,9 @@ const Activities = (() => {
     container.querySelectorAll('.act-btn-delete').forEach(btn => {
       btn.addEventListener('click', (e) => {
         e.stopPropagation();
-        if (confirm('¿Eliminar esta actividad de tu lista?')) {
+        UI.confirmar('¿Eliminar esta actividad de tu lista?', () => {
           _toggleEstado(btn.dataset.id, 'eliminada');
-        }
+        });
       });
     });
   }
